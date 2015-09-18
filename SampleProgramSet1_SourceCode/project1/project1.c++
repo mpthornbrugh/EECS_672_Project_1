@@ -20,10 +20,10 @@ int main(int argc, char* argv[])
 	while (is >> date >> rate1 >> comma >> rate2 >> comma >> rate3 >> comma >> rate4)
 	{
 		if (++nLines <= 5)
-			std::cout << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
+			std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	}
 	std::cout << "\nLast line:\n";
-	std::cout << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
+	std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	return 1;
 
 	// TODO: one or more ModelView dynamic allocations, adding
