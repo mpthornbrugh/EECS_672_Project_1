@@ -14,6 +14,9 @@ class ShaderIF;
 #include <GL/gl.h>
 #endif
 
+typedef float vec2[2];
+typedef float vec3[3];
+
 class ModelView
 {
 public:
