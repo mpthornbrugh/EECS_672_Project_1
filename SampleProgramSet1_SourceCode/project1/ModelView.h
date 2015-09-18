@@ -20,7 +20,7 @@ typedef float vec3[3];
 class ModelView
 {
 public:
-	ModelView(vec2* coords, vec3* colors, float* fractions, int nVertices);
+	ModelView(vec2* coords, vec3* colors, int nVertices);
 	virtual ~ModelView();
 
 	// xyzLimits: {mcXmin, mcXmax, mcYmin, mcYmax, mcZmin, mcZmax}
