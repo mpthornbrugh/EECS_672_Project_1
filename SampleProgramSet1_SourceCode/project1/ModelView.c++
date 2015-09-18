@@ -12,7 +12,7 @@ GLuint ModelView::shaderProgram = 0;
 
 double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
-ModelView::ModelView(vec2* coords, vec3* colors, float* fractions, int nVertices)
+ModelView::ModelView(vec2* coords, vec3* colors, float* fractions, int nVertices) : numVertices(nVertices)
 {
 	if (ModelView::shaderProgram == 0)
 	{
@@ -22,14 +22,14 @@ ModelView::ModelView(vec2* coords, vec3* colors, float* fractions, int nVertices
 		fetchGLSLVariableLocations();
 	}
 
-	// TODO: define and call method(s) to initialize your model and send data to GPU
 	initModelGeometry(coords, colors);
 	ModelView::numInstances++;
 }
 
 ModelView::~ModelView()
 {
-	// TODO: delete the vertex array objects and buffers here
+	glDeleteBuffers(3, vbo);
+	glDeleteVertexArrays(1, vao);
 
 	if (--numInstances == 0)
 	{
