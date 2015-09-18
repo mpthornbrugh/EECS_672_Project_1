@@ -9,6 +9,9 @@
 ShaderIF* ModelView::shaderIF = NULL;
 int ModelView::numInstances = 0;
 GLuint ModelView::shaderProgram = 0;
+GLint ModelView::pvaLoc_vertexColor = -2;
+GLint ModelView::pvaLoc_mcPosition = -2;
+GLint ModelView::ppuLoc_scaleTrans = -2;
 
 double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
@@ -69,7 +72,9 @@ void ModelView::fetchGLSLVariableLocations()
 {
 	if (ModelView::shaderProgram > 0)
 	{
-		// TODO: Set GLSL variable locations here
+		ModelView::pvaLoc_vertexColor = pvAttribLocation(shaderProgram, "vertexColor");
+		ModelView::pvaLoc_mcPosition = pvAttribLocation(shaderProgram, "mcPosition");
+		ModelView::ppuLoc_scaleTrans = ppUniformLocation(shaderProgram, "scaleTrans");
 	}
 }
 
