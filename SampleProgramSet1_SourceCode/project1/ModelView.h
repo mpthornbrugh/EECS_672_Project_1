@@ -41,6 +41,9 @@ private:
 	static ShaderIF* shaderIF;
 	static int numInstances;
 	static GLuint shaderProgram;
+	static GLint pvaLoc_vertexColor;
+	static GLint pvaLoc_mcPosition;
+	static GLint ppuLoc_scaleTrans;
 	
 	// TODO: add uniform and attribute variable location CLASS variables
 
