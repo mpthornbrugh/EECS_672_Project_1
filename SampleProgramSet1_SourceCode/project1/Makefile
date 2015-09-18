@@ -11,6 +11,9 @@ OBJS = project1.o ModelView.o Controller.o GLFWController.o
 project1: $(OBJS) ../lib/libglsl.so
 	$(LINK) -o project1 $(OBJS) $(LOCAL_UTIL_LIBRARIES) $(OGL_LIBRARIES)
 
+clean: 
+	rm *.o project1
+
 ../lib/libglsl.so: ../glslutil/ShaderIF.h ../glslutil/ShaderIF.c++
 	(cd ../glslutil; make)
 
