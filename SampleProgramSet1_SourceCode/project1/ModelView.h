@@ -17,7 +17,7 @@ class ShaderIF;
 class ModelView
 {
 public:
-	ModelView();
+	ModelView(vec2* coords, vec3* colors, float* fractions, int nVertices);
 	virtual ~ModelView();
 
 	// xyzLimits: {mcXmin, mcXmax, mcYmin, mcYmax, mcZmin, mcZmax}
