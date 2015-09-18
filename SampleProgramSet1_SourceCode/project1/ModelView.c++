@@ -15,7 +15,7 @@ GLint ModelView::ppuLoc_scaleTrans = -2;
 
 double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
-ModelView::ModelView(vec2* coords, vec3* colors, float* fractions, int nVertices) : numVertices(nVertices)
+ModelView::ModelView(vec2* coords, vec3* colors, int nVertices) : numVertices(nVertices)
 {
 	if (ModelView::shaderProgram == 0)
 	{
