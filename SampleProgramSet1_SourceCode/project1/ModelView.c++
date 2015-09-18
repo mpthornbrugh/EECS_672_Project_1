@@ -12,7 +12,7 @@ GLuint ModelView::shaderProgram = 0;
 
 double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
-ModelView::ModelView()
+ModelView::ModelView(vec2* coords, vec3* colors, float* fractions, int nVertices)
 {
 	if (ModelView::shaderProgram == 0)
 	{
@@ -23,7 +23,7 @@ ModelView::ModelView()
 	}
 
 	// TODO: define and call method(s) to initialize your model and send data to GPU
-
+	initModelGeometry(coords, colors);
 	ModelView::numInstances++;
 }
 
@@ -83,6 +83,44 @@ void ModelView::getMCBoundingBox(double* xyzLimits) const
 
 void ModelView::handleCommand(unsigned char key, double ldsX, double ldsY)
 {
+}
+
+void ModelView::initModelGeometry(vec2* coords, vec3* colors)
+{
+	glGenVertexArrays(1, vao);
+	glBindVertexArray(vao[0]);
+
+	// [0] - color buffer; [1] - vertex coordinate buffer
+	glGenBuffers(2, vbo);
+
+	// Allocate space for and copy CPU color information to GPU
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
+	int numBytesColors = numVertices * sizeof(vec3);
+	glBufferData(GL_ARRAY_BUFFER, numBytesColors, colors, GL_STATIC_DRAW);
+	glVertexAttribPointer(ModelView::pvaLoc_vertexColor, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(ModelView::pvaLoc_vertexColor);
+
+	// Allocate space for and copy CPU coordinate data to GPU
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
+	int numBytesCoordinateData = numVertices * sizeof(vec2);
+	glBufferData(GL_ARRAY_BUFFER, numBytesCoordinateData, coords, GL_STATIC_DRAW);
+	glVertexAttribPointer(ModelView::pvaLoc_mcPosition, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	glEnableVertexAttribArray(ModelView::pvaLoc_mcPosition);
+
+	// make note of the min/max coordinates
+	xmin = xmax = coords[0][0];
+	ymin = ymax = coords[0][1];
+	for (int i=1 ; i<numVertices ; i++)
+	{
+		if (coords[i][0] < xmin)
+			xmin = coords[i][0];
+		else if (coords[i][0] > xmax)
+			xmax = coords[i][0];
+		if (coords[i][1] < ymin)
+			ymin = coords[i][1];
+		else if (coords[i][1] > ymax)
+			ymax = coords[i][1];
+	}
 }
 
 // linearMap determines the scale and translate parameters needed in
