@@ -32,6 +32,10 @@ public:
 
 private:
 	// TODO: VAO(s), VBO(s), and other relevant INSTANCE variables
+	GLuint vao[1];
+	GLuint vbo[2];
+	int numVertices;
+	float xmin, xmax, ymin, ymax;
 
 	// we assume all instances share the same shader program:
 	static ShaderIF* shaderIF;
