@@ -70,6 +70,8 @@ private:
 	static double mcRegionOfInterest[6];
 
 	static void fetchGLSLVariableLocations();
+
+	void initModelGeometry(vec2* coords, vec3* colors);
 };
 
 #endif
