@@ -68,6 +68,7 @@ int main(int argc, char* argv[])
 
 	// TODO: one or more ModelView dynamic allocations, adding
 	//       each to the Controller using "c.addModel(...);"
+	makeGrid(c, nLines-1);
 
 	// initialize 2D viewing information:
 	// Get the overall scene bounding box in Model Coordinates:

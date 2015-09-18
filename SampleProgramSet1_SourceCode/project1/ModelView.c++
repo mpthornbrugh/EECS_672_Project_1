@@ -81,9 +81,12 @@ void ModelView::fetchGLSLVariableLocations()
 // xyzLimits: {mcXmin, mcXmax, mcYmin, mcYmax, mcZmin, mcZmax}
 void ModelView::getMCBoundingBox(double* xyzLimits) const
 {
-	// TODO:
-	// Put this ModelView instance's min and max x, y, and z extents
-	// into xyzLimits[0..5]. (-1 .. +1 is OK for z direction for 2D models)
+	xyzLimits[0] = xmin; 
+	xyzLimits[1] = xmax;
+	xyzLimits[2] = ymin; 
+	xyzLimits[3] = ymax;
+	xyzLimits[4] = -1.0; 
+	xyzLimits[5] = 1.0;
 }
 
 void ModelView::handleCommand(unsigned char key, double ldsX, double ldsY)
@@ -191,8 +194,14 @@ void ModelView::render() const
 	glUseProgram(shaderProgram);
 
 	// TODO: set scaleTrans (and all other needed) uniform(s)
+	float scaleTrans[4];
+	compute2DScaleTrans(scaleTrans);
+	glUniform4fv(ModelView::ppuLoc_scaleTrans, 1, scaleTrans);
 
 	// TODO: make require primitive call(s)
+	glBindVertexArray(vao[0]); // reestablishes all buffer settings as noted above
+	
+	glDrawArrays(GL_LINES, 0, numVertices);
 
 	// restore the previous program
 	glUseProgram(pgm);
