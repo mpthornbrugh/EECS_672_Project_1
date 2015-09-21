@@ -201,7 +201,7 @@ void ModelView::render() const
 	// TODO: make require primitive call(s)
 	glBindVertexArray(vao[0]); // reestablishes all buffer settings as noted above
 	
-	glDrawArrays(GL_LINES, 0, numVertices);
+	glDrawArrays(GL_LINE_STRIP, 0, numVertices);
 
 	// restore the previous program
 	glUseProgram(pgm);
