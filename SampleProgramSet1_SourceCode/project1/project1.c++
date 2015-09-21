@@ -34,7 +34,6 @@ int main(int argc, char* argv[])
 	std::string date;
 	float rate1, rate2, rate3, rate4;
 	char comma;
-	//std::cout << "First five lines:\n";
 	int nLines = 0;
 	vec2 vertexPositions1[121];
 	vec2 vertexPositions2[121];
@@ -52,20 +51,9 @@ int main(int argc, char* argv[])
 		vertexPositions4[nLines][0] = nLines * 1.0;
 		vertexPositions4[nLines][1] = rate4;
 		++nLines;
-			//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	}
-	//std::cout << "\nLast line:\n";
-	std::cout << rate4 << '\n';
-	vertexPositions1[nLines][0] = nLines * 1.0;
-	vertexPositions1[nLines][1] = rate1;
-	vertexPositions2[nLines][0] = nLines * 1.0;
-	vertexPositions2[nLines][1] = rate2;
-	vertexPositions3[nLines][0] = nLines * 1.0;
-	vertexPositions3[nLines][1] = rate3;
-	vertexPositions4[nLines][0] = nLines * 1.0;
-	vertexPositions4[nLines][1] = rate4;
-	//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 
+	std::cout << nLines << std::endl;
 	
 	makeGrid(c, nLines);
 	c.addModel( new ModelView(vertexPositions1, 1, nLines) );
