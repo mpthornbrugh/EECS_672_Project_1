@@ -9,7 +9,7 @@
 ShaderIF* ModelView::shaderIF = NULL;
 int ModelView::numInstances = 0;
 GLuint ModelView::shaderProgram = 0;
-GLint ModelView::pvaLoc_vertexColor = -2;
+GLint ModelView::ppuLoc_primitiveColor = -2;
 GLint ModelView::pvaLoc_mcPosition = -2;
 GLint ModelView::ppuLoc_scaleTrans = -2;
 
