@@ -9,7 +9,7 @@
 ShaderIF* ModelView::shaderIF = NULL;
 int ModelView::numInstances = 0;
 GLuint ModelView::shaderProgram = 0;
-GLint ModelView::ppuLoc_primitiveColor = -2;
+GLint ModelView::pvaLoc_vertexColor = -2;
 GLint ModelView::pvaLoc_mcPosition = -2;
 GLint ModelView::ppuLoc_scaleTrans = -2;
 
@@ -189,6 +189,8 @@ void ModelView::render() const
 	float scaleTrans[4];
 	compute2DScaleTrans(scaleTrans);
 	glUniform4fv(ModelView::ppuLoc_scaleTrans, 1, scaleTrans);
+
+	glUniform1i(ModelView::ppuLoc_primitiveColor, primitiveColor);
 
 	// TODO: make require primitive call(s)
 	glBindVertexArray(vao[0]); // reestablishes all buffer settings as noted above
