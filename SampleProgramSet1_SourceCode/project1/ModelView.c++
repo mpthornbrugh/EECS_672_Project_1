@@ -72,7 +72,7 @@ void ModelView::fetchGLSLVariableLocations()
 {
 	if (ModelView::shaderProgram > 0)
 	{
-		ModelView::pvaLoc_primitiveColor = ppUniformLocation(shaderProgram, "primitiveColor");
+		ModelView::ppuLoc_primitiveColor = ppUniformLocation(shaderProgram, "primitiveColor");
 		ModelView::pvaLoc_mcPosition = pvAttribLocation(shaderProgram, "mcPosition");
 		ModelView::ppuLoc_scaleTrans = ppUniformLocation(shaderProgram, "scaleTrans");
 	}
