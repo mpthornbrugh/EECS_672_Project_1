@@ -31,7 +31,6 @@ public:
 	static void setMCRegionOfInterest(double xyz[6]);
 
 private:
-	// TODO: VAO(s), VBO(s), and other relevant INSTANCE variables
 	GLuint vao[1];
 	GLuint vbo[2];
 	int numVertices;
@@ -44,8 +43,6 @@ private:
 	static GLint pvaLoc_vertexColor;
 	static GLint pvaLoc_mcPosition;
 	static GLint ppuLoc_scaleTrans;
-	
-	// TODO: add uniform and attribute variable location CLASS variables
 
 	// "pp": "per-primitive"; "pv": "per-vertex"
 	static GLint ppUniformLocation(GLuint glslProgram, const std::string& name);

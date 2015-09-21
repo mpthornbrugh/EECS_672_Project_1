@@ -13,7 +13,7 @@ GLint ModelView::pvaLoc_vertexColor = -2;
 GLint ModelView::pvaLoc_mcPosition = -2;
 GLint ModelView::ppuLoc_scaleTrans = -2;
 
-double ModelView::mcRegionOfInterest[6] = { -2.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
+double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
 ModelView::ModelView(vec2* coords, vec3* colors, int nVertices) : numVertices(nVertices)
 {
