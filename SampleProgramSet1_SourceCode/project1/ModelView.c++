@@ -13,7 +13,7 @@ GLint ModelView::pvaLoc_vertexColor = -2;
 GLint ModelView::pvaLoc_mcPosition = -2;
 GLint ModelView::ppuLoc_scaleTrans = -2;
 
-double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
+double ModelView::mcRegionOfInterest[6] = { -2.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
 ModelView::ModelView(vec2* coords, vec3* colors, int nVertices) : numVertices(nVertices)
 {
@@ -201,7 +201,7 @@ void ModelView::render() const
 	// TODO: make require primitive call(s)
 	glBindVertexArray(vao[0]); // reestablishes all buffer settings as noted above
 	
-	glDrawArrays(GL_LINE_STRIP, 0, numVertices);
+	glDrawArrays(GL_LINES, 0, numVertices);
 
 	// restore the previous program
 	glUseProgram(pgm);
