@@ -55,7 +55,7 @@ int main(int argc, char* argv[])
 			//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	}
 	//std::cout << "\nLast line:\n";
-	std:cout << nLines - 1 << '\n';
+	std::cout << nLines - 1 << '\n';
 	vertexPositions1[nLines - 1][0] = (nLines - 1) * 1.0;
 	vertexPositions1[nLines - 1][1] = rate1;
 	vertexPositions2[nLines - 1][0] = (nLines - 1) * 1.0;
