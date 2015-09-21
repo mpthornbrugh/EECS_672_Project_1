@@ -56,8 +56,7 @@ int main(int argc, char* argv[])
 	vertexPositions4[nLines - 1] = {(nLines - 1) * 1.0, rate4};
 	//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 
-	// TODO: one or more ModelView dynamic allocations, adding
-	//       each to the Controller using "c.addModel(...);"
+	
 	makeGrid(c, nLines-1);
 	c.addModel( new ModelView(vertexPositions1, 1, nLines-1) );
 	c.addModel( new ModelView(vertexPositions2, 2, nLines-1) );
@@ -69,6 +68,7 @@ int main(int argc, char* argv[])
 	double xyz[6]; // xyz limits, even though this is 2D
 	c.getOverallMCBoundingBox(xyz);
 
+	// This is done so that the grid is shown with a border around it.
 	xyz[0] = -10;
  	xyz[1] += 10;
  	xyz[2] -= .5;
