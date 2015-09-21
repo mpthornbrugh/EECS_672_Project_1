@@ -42,10 +42,14 @@ int main(int argc, char* argv[])
 	vec2 vertexPositions4[120];
 	while (is >> date >> rate1 >> comma >> rate2 >> comma >> rate3 >> comma >> rate4)
 	{
-		vertexPositions1[nLines] = {nLines * 1.0, rate1};
-		vertexPositions2[nLines] = {nLines * 1.0, rate2};
-		vertexPositions3[nLines] = {nLines * 1.0, rate3};
-		vertexPositions4[nLines] = {nLines * 1.0, rate4};
+		vertexPositions1[nLines][0] = nLines * 1.0;
+		vertexPositions1[nLines][1] = rate1;
+		vertexPositions2[nLines][0] = nLines * 1.0;
+		vertexPositions2[nLines][1] = rate2;
+		vertexPositions3[nLines][0] = nLines * 1.0;
+		vertexPositions3[nLines][1] = rate3;
+		vertexPositions4[nLines][0] = nLines * 1.0;
+		vertexPositions4[nLines][1] = rate4;
 		++nLines;
 			//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	}
