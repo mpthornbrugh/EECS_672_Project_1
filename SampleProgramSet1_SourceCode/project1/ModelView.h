@@ -72,7 +72,7 @@ private:
 
 	static void fetchGLSLVariableLocations();
 
-	void initModelGeometry(vec2* coords, vec3* colors);
+	void initModelGeometry(vec2* coords);
 };
 
 #endif
