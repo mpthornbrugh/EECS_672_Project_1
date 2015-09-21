@@ -56,7 +56,7 @@ void ModelView::compute2DScaleTrans(float* scaleTransF) // CLASS METHOD
 	// If we wish to preserve aspect ratios, make "region of interest"
 	// wider or taller to match the Controller's viewport aspect ratio.
 	double vAR = Controller::getCurrentController()->getViewportAspectRatio();
-	matchAspectRatio(xmin, xmax, ymin, ymax, vAR);
+	//matchAspectRatio(xmin, xmax, ymin, ymax, vAR);
 
     // We are only concerned with the xy extents for now, hence we will
     // ignore mcRegionOfInterest[4] and mcRegionOfInterest[5].
