@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <queue>
 #include "GLFWController.h"
 #include "ModelView.h"
 
@@ -20,7 +21,7 @@ void makeGrid(Controller& c, int maxWidth) {
 		{0.0,1.6},{maxWidth,1.6}
 	};
 
-	c.addModel( new ModelView(vertexPositions, 1.0, 20) );
+	c.addModel( new ModelView(vertexPositions, 0, 20) );
 }
 
 int main(int argc, char* argv[])
@@ -35,17 +36,33 @@ int main(int argc, char* argv[])
 	char comma;
 	std::cout << "First five lines:\n";
 	int nLines = 0;
+	vec2 vertexPositions1[120];
+	vec2 vertexPositions2[120];
+	vec2 vertexPositions3[120];
+	vec2 vertexPositions4[120];
 	while (is >> date >> rate1 >> comma >> rate2 >> comma >> rate3 >> comma >> rate4)
 	{
-		if (++nLines <= 5)
-			std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
+		vertexPositions1[nLines] = {nLines * 1.0, rate1};
+		vertexPositions2[nLines] = {nLines * 1.0, rate2};
+		vertexPositions3[nLines] = {nLines * 1.0, rate3};
+		vertexPositions4[nLines] = {nLines * 1.0, rate4};
+		++nLines;
+			//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	}
-	std::cout << "\nLast line:\n";
-	std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
+	//std::cout << "\nLast line:\n";
+	vertexPositions1[nLines - 1] = {(nLines - 1) * 1.0, rate1};
+	vertexPositions2[nLines - 1] = {(nLines - 1) * 1.0, rate2};
+	vertexPositions3[nLines - 1] = {(nLines - 1) * 1.0, rate3};
+	vertexPositions4[nLines - 1] = {(nLines - 1) * 1.0, rate4};
+	//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 
 	// TODO: one or more ModelView dynamic allocations, adding
 	//       each to the Controller using "c.addModel(...);"
 	makeGrid(c, nLines-1);
+	c.addModel( new ModelView(vertexPositions1, 1, nLines-1) );
+	c.addModel( new ModelView(vertexPositions2, 2, nLines-1) );
+	c.addModel( new ModelView(vertexPositions3, 3, nLines-1) );
+	c.addModel( new ModelView(vertexPositions4, 4, nLines-1) );
 
 	// initialize 2D viewing information:
 	// Get the overall scene bounding box in Model Coordinates:
