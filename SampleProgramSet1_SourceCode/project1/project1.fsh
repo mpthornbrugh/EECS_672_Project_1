@@ -1,7 +1,7 @@
 #version 410 core
 
 in vec3 colorToFS;
-uniform float primitiveColor;
+uniform double primitiveColor;
 
 // Replace the placeholder implementation here...
 

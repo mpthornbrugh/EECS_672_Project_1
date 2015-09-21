@@ -20,7 +20,7 @@ typedef float vec3[3];
 class ModelView
 {
 public:
-	ModelView(vec2* coords, vec3* colors, int nVertices);
+	ModelView(vec2* coords, double color, int nVertices);
 	virtual ~ModelView();
 
 	// xyzLimits: {mcXmin, mcXmax, mcYmin, mcYmax, mcZmin, mcZmax}
@@ -32,15 +32,16 @@ public:
 
 private:
 	GLuint vao[1];
-	GLuint vbo[2];
+	GLuint vbo[1];
 	int numVertices;
+	double primitiveColor;
 	float xmin, xmax, ymin, ymax;
 
 	// we assume all instances share the same shader program:
 	static ShaderIF* shaderIF;
 	static int numInstances;
 	static GLuint shaderProgram;
-	static GLint pvaLoc_vertexColor;
+	static GLint ppuLoc_primitiveColor;
 	static GLint pvaLoc_mcPosition;
 	static GLint ppuLoc_scaleTrans;
 
