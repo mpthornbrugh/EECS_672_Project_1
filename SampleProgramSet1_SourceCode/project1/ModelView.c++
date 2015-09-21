@@ -15,7 +15,7 @@ GLint ModelView::ppuLoc_scaleTrans = -2;
 
 double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
-ModelView::ModelView(vec2* coords, vec3* colors, int nVertices) : numVertices(nVertices)
+ModelView::ModelView(vec2* coords, float color, int nVertices) : numVertices(nVertices), primitiveColor(color)
 {
 	if (ModelView::shaderProgram == 0)
 	{
@@ -25,13 +25,13 @@ ModelView::ModelView(vec2* coords, vec3* colors, int nVertices) : numVertices(nV
 		fetchGLSLVariableLocations();
 	}
 
-	initModelGeometry(coords, colors);
+	initModelGeometry(coords, color);
 	ModelView::numInstances++;
 }
 
 ModelView::~ModelView()
 {
-	glDeleteBuffers(3, vbo);
+	glDeleteBuffers(1, vbo);
 	glDeleteVertexArrays(1, vao);
 
 	if (--numInstances == 0)
@@ -72,7 +72,7 @@ void ModelView::fetchGLSLVariableLocations()
 {
 	if (ModelView::shaderProgram > 0)
 	{
-		ModelView::pvaLoc_vertexColor = pvAttribLocation(shaderProgram, "vertexColor");
+		ModelView::pvaLoc_primitiveColor = ppUniformLocation(shaderProgram, "primitiveColor");
 		ModelView::pvaLoc_mcPosition = pvAttribLocation(shaderProgram, "mcPosition");
 		ModelView::ppuLoc_scaleTrans = ppUniformLocation(shaderProgram, "scaleTrans");
 	}
@@ -93,23 +93,15 @@ void ModelView::handleCommand(unsigned char key, double ldsX, double ldsY)
 {
 }
 
-void ModelView::initModelGeometry(vec2* coords, vec3* colors)
+void ModelView::initModelGeometry(vec2* coords)
 {
 	glGenVertexArrays(1, vao);
 	glBindVertexArray(vao[0]);
 
-	// [0] - color buffer; [1] - vertex coordinate buffer
-	glGenBuffers(2, vbo);
-
-	// Allocate space for and copy CPU color information to GPU
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-	int numBytesColors = numVertices * sizeof(vec3);
-	glBufferData(GL_ARRAY_BUFFER, numBytesColors, colors, GL_STATIC_DRAW);
-	glVertexAttribPointer(ModelView::pvaLoc_vertexColor, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glEnableVertexAttribArray(ModelView::pvaLoc_vertexColor);
+	glGenBuffers(1, vbo);
 
 	// Allocate space for and copy CPU coordinate data to GPU
-	glBindBuffer(GL_ARRAY_BUFFER, vbo[2]);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 	int numBytesCoordinateData = numVertices * sizeof(vec2);
 	glBufferData(GL_ARRAY_BUFFER, numBytesCoordinateData, coords, GL_STATIC_DRAW);
 	glVertexAttribPointer(ModelView::pvaLoc_mcPosition, 2, GL_FLOAT, GL_FALSE, 0, 0);

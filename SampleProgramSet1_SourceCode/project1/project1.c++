@@ -6,29 +6,6 @@
 #include "ModelView.h"
 
 void makeGrid(Controller& c, int maxWidth) {
-	vec3 vertexColors[20] = {
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5},
-		{0.5, 0.5, 0.5}
-	};
-
 	vec2 vertexPositions[] =
 	{
 		{0.0,0.0},{maxWidth,0.0},
@@ -43,7 +20,7 @@ void makeGrid(Controller& c, int maxWidth) {
 		{0.0,1.6},{maxWidth,1.6}
 	};
 
-	c.addModel( new ModelView(vertexPositions, vertexColors, 20) );
+	c.addModel( new ModelView(vertexPositions, 1.0, 20) );
 }
 
 int main(int argc, char* argv[])
@@ -76,9 +53,9 @@ int main(int argc, char* argv[])
 	c.getOverallMCBoundingBox(xyz);
 
 	xyz[0] = -10;
-  xyz[1] += 10;
-  xyz[2] -= .5;
-  xyz[3] += .5;
+ 	xyz[1] += 10;
+ 	xyz[2] -= .5;
+ 	xyz[3] += .5;
 
 	// Simplest case: Just tell the ModelView we want to see it all:
 	ModelView::setMCRegionOfInterest(xyz);
