@@ -54,10 +54,14 @@ int main(int argc, char* argv[])
 			//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	}
 	//std::cout << "\nLast line:\n";
-	vertexPositions1[nLines - 1] = {(nLines - 1) * 1.0, rate1};
-	vertexPositions2[nLines - 1] = {(nLines - 1) * 1.0, rate2};
-	vertexPositions3[nLines - 1] = {(nLines - 1) * 1.0, rate3};
-	vertexPositions4[nLines - 1] = {(nLines - 1) * 1.0, rate4};
+	vertexPositions1[nLines - 1][0] = (nLines - 1) * 1.0;
+	vertexPositions1[nLines - 1][1] = rate1;
+	vertexPositions2[nLines - 1][0] = (nLines - 1) * 1.0;
+	vertexPositions2[nLines - 1][1] = rate2;
+	vertexPositions3[nLines - 1][0] = (nLines - 1) * 1.0;
+	vertexPositions3[nLines - 1][1] = rate3;
+	vertexPositions4[nLines - 1][0] = (nLines - 1) * 1.0;
+	vertexPositions4[nLines - 1][1] = rate4;
 	//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 
 	
