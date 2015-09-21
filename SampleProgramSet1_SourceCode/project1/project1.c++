@@ -41,7 +41,6 @@ int main(int argc, char* argv[])
 	vec2 vertexPositions4[121];
 	while (is >> date >> rate1 >> comma >> rate2 >> comma >> rate3 >> comma >> rate4)
 	{
-		std::cout << rate4 << '\n';
 		vertexPositions1[nLines][0] = nLines * 1.0;
 		vertexPositions1[nLines][1] = rate1;
 		vertexPositions2[nLines][0] = nLines * 1.0;
@@ -52,8 +51,6 @@ int main(int argc, char* argv[])
 		vertexPositions4[nLines][1] = rate4;
 		++nLines;
 	}
-
-	std::cout << nLines << std::endl;
 	
 	makeGrid(c, nLines);
 	c.addModel( new ModelView(vertexPositions1, 1, nLines) );
