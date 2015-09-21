@@ -75,9 +75,7 @@ int main(int argc, char* argv[])
 	double xyz[6]; // xyz limits, even though this is 2D
 	c.getOverallMCBoundingBox(xyz);
 
-	for (int i = 0; i < 6; i++) {
-		std::cout << xyz[i] << '\n';
-	}
+	xyz[0] -= -10
 
 	// Simplest case: Just tell the ModelView we want to see it all:
 	ModelView::setMCRegionOfInterest(xyz);
