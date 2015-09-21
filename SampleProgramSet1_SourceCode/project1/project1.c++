@@ -36,10 +36,10 @@ int main(int argc, char* argv[])
 	char comma;
 	//std::cout << "First five lines:\n";
 	int nLines = 0;
-	vec2 vertexPositions1[120];
-	vec2 vertexPositions2[120];
-	vec2 vertexPositions3[120];
-	vec2 vertexPositions4[120];
+	vec2 vertexPositions1[121];
+	vec2 vertexPositions2[121];
+	vec2 vertexPositions3[121];
+	vec2 vertexPositions4[121];
 	while (is >> date >> rate1 >> comma >> rate2 >> comma >> rate3 >> comma >> rate4)
 	{
 		std::cout << nLines << '\n';
@@ -55,23 +55,23 @@ int main(int argc, char* argv[])
 			//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 	}
 	//std::cout << "\nLast line:\n";
-	std::cout << nLines - 1 << '\n';
-	vertexPositions1[nLines - 1][0] = (nLines - 1) * 1.0;
-	vertexPositions1[nLines - 1][1] = rate1;
-	vertexPositions2[nLines - 1][0] = (nLines - 1) * 1.0;
-	vertexPositions2[nLines - 1][1] = rate2;
-	vertexPositions3[nLines - 1][0] = (nLines - 1) * 1.0;
-	vertexPositions3[nLines - 1][1] = rate3;
-	vertexPositions4[nLines - 1][0] = (nLines - 1) * 1.0;
-	vertexPositions4[nLines - 1][1] = rate4;
+	std::cout << nLines << '\n';
+	vertexPositions1[nLines][0] = nLines * 1.0;
+	vertexPositions1[nLines][1] = rate1;
+	vertexPositions2[nLines][0] = nLines * 1.0;
+	vertexPositions2[nLines][1] = rate2;
+	vertexPositions3[nLines][0] = nLines * 1.0;
+	vertexPositions3[nLines][1] = rate3;
+	vertexPositions4[nLines][0] = nLines * 1.0;
+	vertexPositions4[nLines][1] = rate4;
 	//std::cout << nLines << ' ' << date << ' ' << rate1 << ' ' << rate2 << ' ' << rate3 << ' ' << rate4 << '\n';
 
 	
-	makeGrid(c, nLines-1);
-	c.addModel( new ModelView(vertexPositions1, 1, nLines-1) );
-	c.addModel( new ModelView(vertexPositions2, 2, nLines-1) );
-	c.addModel( new ModelView(vertexPositions3, 3, nLines-1) );
-	c.addModel( new ModelView(vertexPositions4, 4, nLines-1) );
+	makeGrid(c, nLines);
+	c.addModel( new ModelView(vertexPositions1, 1, nLines) );
+	c.addModel( new ModelView(vertexPositions2, 2, nLines) );
+	c.addModel( new ModelView(vertexPositions3, 3, nLines) );
+	c.addModel( new ModelView(vertexPositions4, 4, nLines) );
 
 	// initialize 2D viewing information:
 	// Get the overall scene bounding box in Model Coordinates:
