@@ -25,7 +25,7 @@ ModelView::ModelView(vec2* coords, int color, int nVertices, int isGrid) : numVe
 		fetchGLSLVariableLocations();
 	}
 
-	initModelGeometry(coords, isGrid);
+	initModelGeometry(coords);
 	ModelView::numInstances++;
 }
 
