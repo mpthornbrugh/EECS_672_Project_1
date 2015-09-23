@@ -64,10 +64,10 @@ int main(int argc, char* argv[])
 	c.getOverallMCBoundingBox(xyz);
 
 	// This is done so that the grid is shown with a border around it.
-	xyz[0] = -10;
- 	xyz[1] += 10;
- 	xyz[2] -= .5;
- 	xyz[3] += .5;
+	xyz[0] = -5;
+ 	xyz[1] += 5;
+ 	xyz[2] -= .2;
+ 	xyz[3] += .2;
 
 	// Simplest case: Just tell the ModelView we want to see it all:
 	ModelView::setMCRegionOfInterest(xyz);
