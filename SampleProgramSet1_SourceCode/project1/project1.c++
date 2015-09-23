@@ -21,7 +21,7 @@ void makeGrid(Controller& c, int maxWidth) {
 		{0.0,1.6},{maxWidth,1.6}
 	};
 
-	c.addModel( new ModelView(vertexPositions, 0, 20) );
+	c.addModel( new ModelView(vertexPositions, 0, 20, 1) );
 }
 
 int main(int argc, char* argv[])
@@ -53,10 +53,10 @@ int main(int argc, char* argv[])
 	}
 	
 	makeGrid(c, nLines);
-	c.addModel( new ModelView(vertexPositions1, 1, nLines) );
-	c.addModel( new ModelView(vertexPositions2, 2, nLines) );
-	c.addModel( new ModelView(vertexPositions3, 3, nLines) );
-	c.addModel( new ModelView(vertexPositions4, 4, nLines) );
+	c.addModel( new ModelView(vertexPositions1, 1, nLines, 0) );
+	c.addModel( new ModelView(vertexPositions2, 2, nLines, 0) );
+	c.addModel( new ModelView(vertexPositions3, 3, nLines, 0) );
+	c.addModel( new ModelView(vertexPositions4, 4, nLines, 0) );
 
 	// initialize 2D viewing information:
 	// Get the overall scene bounding box in Model Coordinates:
