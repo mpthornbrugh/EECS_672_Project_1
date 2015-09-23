@@ -15,7 +15,7 @@ GLint ModelView::ppuLoc_scaleTrans = -2;
 
 double ModelView::mcRegionOfInterest[6] = { -1.0, 1.0, -1.0, 1.0, -1.0, 1.0 };
 
-ModelView::ModelView(vec2* coords, int color, int nVertices) : numVertices(nVertices), primitiveColor(color)
+ModelView::ModelView(vec2* coords, int color, int nVertices, int isGrid) : numVertices(nVertices), primitiveColor(color), isGrid(isGrid)
 {
 	if (ModelView::shaderProgram == 0)
 	{
@@ -25,13 +25,13 @@ ModelView::ModelView(vec2* coords, int color, int nVertices) : numVertices(nVert
 		fetchGLSLVariableLocations();
 	}
 
-	initModelGeometry(coords);
+	initModelGeometry(coords, isGrid);
 	ModelView::numInstances++;
 }
 
 ModelView::~ModelView()
 {
-	glDeleteBuffers(1, vbo);
+	glDeleteBuffers(5, vbo);
 	glDeleteVertexArrays(1, vao);
 
 	if (--numInstances == 0)
@@ -100,7 +100,6 @@ void ModelView::initModelGeometry(vec2* coords)
 
 	glGenBuffers(1, vbo);
 
-	// Allocate space for and copy CPU coordinate data to GPU
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 	int numBytesCoordinateData = numVertices * sizeof(vec2);
 	glBufferData(GL_ARRAY_BUFFER, numBytesCoordinateData, coords, GL_STATIC_DRAW);
@@ -195,7 +194,12 @@ void ModelView::render() const
 	// TODO: make require primitive call(s)
 	glBindVertexArray(vao[0]); // reestablishes all buffer settings as noted above
 	
-	glDrawArrays(GL_LINES, 0, numVertices);
+	if (isGrid) {
+		glDrawArrays(GL_LINES, 0, numVertices);
+	}
+	else {
+		glDrawArrays(GL_LINE_STRIP, 0, numVertices);
+	}
 
 	// restore the previous program
 	glUseProgram(pgm);
